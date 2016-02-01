@@ -158,12 +158,14 @@ begin
                 red <= "0000";
                 green <= "0000";
                 blue <= "0000";
+                -- pady := conv_integer (reg3);
                 if (xpos > padx and xpos < padx+10) and (ypos > pady and ypos < pady+60) then
                     red <= "0000";
                     green <= "1111";
                     blue <= "0000";
                 end if;
-                --baly := conv_integer(reg1);
+                -- baly := conv_integer(reg1);
+                -- balx := conv_integer (reg2);
                 if (xpos > balx and xpos < balx+10) and (ypos > baly and ypos < baly+10) then
                     red <= "1111";
                     green <= "0000";
