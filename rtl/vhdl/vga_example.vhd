@@ -137,6 +137,10 @@ begin
         figuur: process (clkdiv2)
             variable xpos : natural range 0 to 300000000 := 0;
             variable ypos :natural range 0 to 300000000 := 0;
+            variable baly : integer := 320;
+            variable balx : integer := 180;
+            variable pady : integer := 320;
+            variable padx : integer := 50;
         begin
             if clkdiv2'event and clkdiv2 = '1' then     
                 if onscreen = '1' then
@@ -151,26 +155,20 @@ begin
                 if vscreen = '0' then
                     ypos := 0;
                 end if;
-                if xpos < 320  and ypos < 240 then
+                red <= "0000";
+                green <= "0000";
+                blue <= "0000";
+                if (xpos > padx and xpos < padx+10) and (ypos > pady and ypos < pady+60) then
                     red <= "0000";
                     green <= "1111";
                     blue <= "0000";
                 end if;
-                if xpos < 320  and ypos > 240 then
+                --baly := conv_integer(reg1);
+                if (xpos > balx and xpos < balx+10) and (ypos > baly and ypos < baly+10) then
                     red <= "1111";
-                    green <= "1111";
-                    blue <= "0000";
-                end if;
-                if xpos > 320  and ypos > 240 then
-                    red <= "0000";
-                    green <= "1111";
-                    blue <= "1111";
-                end if;
-                if xpos > 320  and ypos < 240 then
-                    red <= "0000";
                     green <= "0000";
-                    blue <= "1111";
-                end if;
+                    blue <= "0000";                   
+                end if;  
                 if onscreen = '0' then
                     red <= "0000";
                     green <= "0000";
