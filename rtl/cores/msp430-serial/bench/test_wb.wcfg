@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="pkg_helpers" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="test_wb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="23" />
+   <wvobject fp_name="/test_wb/txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/rxd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxd</obj_property>
+      <obj_property name="ObjectShortName">rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider15" type="divider">
+      <obj_property name="label">WISHBONE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/rst_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/clk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/adr_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">adr_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">adr_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/dat_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dat_i[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dat_i[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/dat_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dat_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dat_o[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/we_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">we_i</obj_property>
+      <obj_property name="ObjectShortName">we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/stb_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">stb_i</obj_property>
+      <obj_property name="ObjectShortName">stb_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/sel_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sel_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sel_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider30" type="divider">
+      <obj_property name="label">WB - REGISTERS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/reg_status" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_status[15:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_status[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/test_wb/uut/reg_status[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[5]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[5]</obj_property>
+         <obj_property name="label">[5] - FIFO_EN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[4]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[4]</obj_property>
+         <obj_property name="label">[4] - FIFO FULL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[3]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[3]</obj_property>
+         <obj_property name="label">[3] - FIFO EMPTY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[2]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[2]</obj_property>
+         <obj_property name="label">[2] - RXDONE_LVL</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[1]</obj_property>
+         <obj_property name="label">[1] - RXBUSY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_wb/uut/reg_status[0]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">reg_status[0]</obj_property>
+         <obj_property name="label">[0] - TXBUSY</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/reg_level" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_level[4:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_level[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider16" type="divider">
+      <obj_property name="label">IP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/baudrate" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">baudrate</obj_property>
+      <obj_property name="ObjectShortName">baudrate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/baudrate_x8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">baudrate_x8</obj_property>
+      <obj_property name="ObjectShortName">baudrate_x8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/tx_char" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_char[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_char[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider23" type="divider">
+      <obj_property name="label">IP - TX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/serial_rx/nreset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nreset</obj_property>
+      <obj_property name="ObjectShortName">nreset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/serial_tx/clk_sys" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_sys</obj_property>
+      <obj_property name="ObjectShortName">clk_sys</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/serial_tx/tx_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_start</obj_property>
+      <obj_property name="ObjectShortName">tx_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_wb/uut/serial_tx/run" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run</obj_property>
+      <obj_property name="ObjectShortName">run</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,266 @@
+#
+# Build rules for compiling hdl to target
+#
+
+all:
+
+# Keep intermediate files
+.SECONDARY:
+
+# detect build environment
+UNAME=${shell uname -o}
+
+ifneq ($(UNAME), GNU/Linux)
+EXE=.exe
+endif
+
+ifndef ROOT
+ROOT=$(CURDIR)
+endif
+
+# define flags used to compile the model
+XST_FLAGS+=-ifmt mixed
+XST_FLAGS+=-ofmt NGC
+XST_FLAGS+=-p ${TARGET}
+#XST_FLAGS+=-keep_hierarchy yes
+XST_FLAGS+=-opt_mode Speed
+
+# configure verbose level
+ifneq ($(V), 1)
+XST_VERBOSE=-intstyle silent
+NGD_VERBOSE=-intstyle silent
+MAP_VERBOSE=-intstyle silent
+PAR_VERBOSE=-intstyle silent
+BIT_VERBOSE=-intstyle silent
+endif
+
+$(COMPILER)/%.top: 
+	@echo "  TOP	$(@)"
+	@mkdir$(EXE) -p $(COMPILER)
+	@mkdir$(EXE) -p $(ROOT)/$(COMPILER)
+	@touch $(@)
+
+clean::
+	rm -rf $(COMPILER) $(SIMDIR)
+
+#
+# Template for creating netlists
+#
+define TEMPLATE_CREATE_NETLIST
+$(COMPILER)/$(1).ngc: $(2)
+endef
+
+define TEMPLATE_CREATE_DESIGN
+all: $(COMPILER)/$(1).bit
+$(COMPILER)/$(1).ngd: $(COMPILER)/$(1).ngc $(2) $(3)
+endef
+
+define TEMPLATE_COPY_HDLSRC
+$(1) += $(4)/$(2)
+$(4)/$(2): $(3)/$(2)
+ifeq ($(UNAME), GNU/Linux)
+	@echo "  LN	$(3)/$(2) -> $(4)/$(2)"
+	@ln -sf $(3)/$(2) $(4)/$(2)
+else
+	@echo "  CP	$(3)/$(2) -> $(4)/$(2)"
+	@cp $(3)/$(2) $(4)/$(2)
+endif
+endef
+
+define TEMPLATE_CREATE_MODULE
+$(1) += $(3)/synthesis/module/$(COMPILER)/$(2).ngc
+module_all: $(3)/synthesis/module/$(COMPILER)/$(2).ngc
+module_$(2): $(3)/synthesis/module/$(COMPILER)/$(2).ngc
+module_clean: module_clean_$(2)
+module_clean_$(2):
+	@echo "  MODCLEAN	$(2)"
+	@make -C $(3)/synthesis/module ROOT=$(PWD) clean
+
+$(3)/synthesis/module/$(COMPILER)/$(2).ngc:
+	@echo "  MOD	$(2)"
+	@make -C $(3)/synthesis/module ROOT=$(PWD) TARGET=$(TARGET)
+	@cp $(COMPILER)/$(2).ngc.d $(COMPILER)/$(2).ngc.d.mod
+	@echo $(3)/synthesis/module/$(COMPILER)/$(2).ngc : \\ > $(COMPILER)/$(2).ngc.d 
+	@sed -i -e "s/\\ *$$$$//g" $(COMPILER)/$(2).ngc.d
+	@sed -e "1d" $(COMPILER)/$(2).ngc.d.mod >> $(COMPILER)/$(2).ngc.d
+	@echo HDL_SRC_MOD_$(2) += \\ >> $(COMPILER)/$(2).ngc.d
+	@sed -e "1d" $(COMPILER)/$(2).ngc.d.mod >> $(COMPILER)/$(2).ngc.d
+endef
+
+define TEMPLATE_SIMULATE
+gsim_$(1): $(SIMDIR)/$(1).exe
+	cd sim; ./$(1).exe -gui -view $(BENCHDIR)/$(1).wcfg
+
+rsim_$(1): $(SIMDIR)/$(1).vcd
+
+sim_$(1): $(SIMDIR)/$(1).exe
+$(SIMDIR)/$(1).exe: $(SRC_$(1))
+
+clean_sim_$(1):
+	rm -rf $(SIMDIR)/$(1).*
+	rm -rf $(COMPILER)/$(1).*
+endef
+
+define CMD_COLLECT_SOURCES
+	@echo $(1) > $(COMPILER)/sources-all.txt 
+	@sed -e "s/ /\n/g" $(COMPILER)/sources-all.txt > $(COMPILER)/sources.txt
+	@sed -ne "s/\(.*v$$\)/verilog work \"\1\"/p" $(COMPILER)/sources.txt >> $(2)
+	@sed -ne "s/\(.*vhd$$\)/vhdl work \"\1\"/p" $(COMPILER)/sources.txt  >> $(2)
+endef
+
+define CMD_XST_DEPENDENCIES
+	@echo "$(CURDIR)/$(1) : \\" > $(ROOT)/$(1).d 
+	@sed -i -e "s/\"//g" $(ROOT)/$(1).d
+	@sed -i -e "s/\\ *$$//g" $(ROOT)/$(1).d
+	@echo $(filter %.vhd %.v, $(2)) >> $(ROOT)/$(1).d
+endef
+
+#
+# create netlist files from the original sources
+#
+$(COMPILER)/%.ngc: $(HDL_SRC)
+	@echo "  NGC	$(@)"
+	@rm -f $(@:%.ngc=%.prj)
+	$(call CMD_COLLECT_SOURCES,$(^),$(@:%.ngc=%.prj))
+	$(call CMD_XST_DEPENDENCIES,$(@),$(^))
+	@echo run > ${@:%.ngc=%.scr}
+	@echo -ifn ${notdir ${@:%.ngc=%.prj}} >> ${@:%.ngc=%.scr}
+	@echo -top ${subst .top,,${notdir ${filter %.top,${^}}}} >> ${@:%.ngc=%.scr}
+	@echo -ofn ${notdir ${@}} >> ${@:%.ngc=%.scr}
+	@echo ${XST_FLAGS} ${XST_FLAGS_${notdir ${@:%.ngc=%}}} >> ${@:%.ngc=%.scr}
+	@cd ${COMPILER} && xst $(XST_VERBOSE) -ifn $(@:${COMPILER}/%.ngc=%.scr) -ofn ${@:${COMPILER}/%.ngc=%.syr}
+
+#
+# combine them together to one design
+# Note that symlinks do not seem to work properly when using cygwin, so copy them instead
+#
+ifdef MEMORYMAP
+NGD_FLAGS += -bm ../$(MEMORYMAP)
+endif
+
+${COMPILER}/%.ngd: $(MEMORYMAP)
+	@echo "  NGD	$@"
+	@echo "     OS:$(UNAME)"
+ifeq ($(UNAME), GNU/Linux)
+	@for i in ${filter %.ngc,${^}}; do \
+		NETLIST=`echo ${notdir $${i}} | sed 's/.*\/\(.*\)/${COMPILER}\/\1/'`; \
+		if [ ! -f $$NETLIST ]; then \
+			echo "  LN $$NETLIST --> $$i"; \
+			ln -sf $$i $$NETLIST;  \
+		fi; \
+	 done; 
+else
+	@echo ${filter %.ngc,${^}} > $(COMPILER)/sources-ngd-all.txt 
+	@sed -e "s/ /\n/g" $(COMPILER)/sources-ngd-all.txt > $(COMPILER)/sources-ngd.txt 
+	@sed -e "s/^xilinx.*//g" $(COMPILER)/sources-ngd.txt > $(COMPILER)/sources-ngd.bat 
+	@sed -e "/^$$/d" $(COMPILER)/sources-ngd.bat > $(COMPILER)/sources-ngd.txt 
+	@sed -e "s/^\(.*\)/cp -f \1 \./g" $(COMPILER)/sources-ngd.txt > $(COMPILER)/sources-ngd.bat 
+	@cd $(COMPILER) && sources-ngd.bat 
+endif
+	@cd $(COMPILER) && ngdbuild $(NGD_VERBOSE) $(NGD_FLAGS) -p $(TARGET) -uc ../$(filter %.ucf,$^) $(notdir $(@:%.ngd=%.ngc)) $(notdir $(@))
+
+#
+# translate the design towards the FPGA
+#
+ifdef TIMING_MODE
+MAP_FLAGS += -timing -ol high -xe n -register_duplication on -logic_opt on -power off
+endif
+
+${COMPILER}/%_map.ncd: ${COMPILER}/%.ngd
+	@echo "  MAP	${@}"
+	@cd $(COMPILER) && map $(MAP_VERBOSE) $(MAP_FLAGS) -bp -cm speed -w -o ${notdir ${@}} ${notdir ${^}}
+
+#
+# place and route
+#
+${COMPILER}/%.ncd: ${COMPILER}/%_map.ncd
+	@echo "  PAR	${@}"
+	@cd $(COMPILER) && par $(PAR_VERBOSE) -ol high -w -xe n ${notdir ${^}} ${notdir ${@}}
+
+#
+# generate bitfile
+#
+${COMPILER}/%.bit: ${COMPILER}/%.ncd
+	@echo "  BIT	${@}"
+	@cd $(COMPILER) && bitgen $(BIT_VERBOSE) -d -w ${notdir ${^}}
+
+#
+# generate simulation file
+#
+$(COMPILER)/%.vhd: $(COMPILER)/%.ncd
+	@echo "  VHD	$(@)"
+	@cd $(COMPILER) && netgen -w -sim -ofmt vhdl ${notdir ${^}}
+
+#
+# simulate behavior
+#
+$(SIMDIR)/sim-wrapper:
+	@mkdir -p $(SIMDIR)
+	@echo "  GEN	${@}"
+	@echo "#!/bin/bash" > ${@}
+	@echo "cd ../${COMPILER}" >> ${@}
+	@echo "exec ./\$${0##*/} \"\$$@\"" >> ${@}
+	@chmod +x ${@}
+
+$(SIMDIR)/%.exe: 
+	@echo "  SIM    $(@)"
+	@$(MAKE) $(SIMDIR)/sim-wrapper
+	@# generate isim command set
+	@mkdir -p $(COMPILER)
+	@echo "vcd dumpfile ../$(@:%.exe=%.vcd)" 	 > $(COMPILER)/isim.cmd
+	@echo "vcd dumpvars -m / -l 0" 	>> $(COMPILER)/isim.cmd
+	@echo "run 300us" 				>> $(COMPILER)/isim.cmd
+	@echo "vcd dumpoff" 			>> $(COMPILER)/isim.cmd
+	@echo "quit" 					>> $(COMPILER)/isim.cmd
+	@rm -f $(COMPILER)/$(notdir $(@:%.exe=%.prj))
+	@# get the sources together
+	@$(call CMD_COLLECT_SOURCES,$(^),$(COMPILER)/$(notdir $(@:%.exe=%.prj)))
+	@# build sim executable
+	@cd $(COMPILER); fuse -incremental -prj $(notdir $(@:%.exe=%.prj)) -o $(notdir $(@)) $(notdir $(@:%.exe=%))
+	@# create a simlink for the gui
+	@cd $(SIMDIR); ln -fs sim-wrapper $(notdir $(@))
+
+$(SIMDIR)/%.vcd: $(SIMDIR)/%.exe
+	@# run simulation
+	@cd $(SIMDIR); ./$(notdir $(@:%.vcd=%.exe)) -tclbatch isim.cmd
+
+#
+# download process
+#
+impact: ${COMPILER}/impact.cfg
+	@echo "  IMP    $(PROJECT)";
+	@cd ${COMPILER}; impact -batch impact.cfg
+
+ifeq ($(BOARD), SPARTAN3AN-STARTER-KIT)
+$(COMPILER)/impact.cfg::
+	@echo "  IMPCFG $(BOARD)"
+	@echo setMode -bscan                                         > $(@)
+	@echo setCable -p auto                                      >> $(@)
+	@echo addDevice -p 1 -file $(notdir $(PROJECT:%.elf=%)).bit >> $(@)
+	@echo addDevice -p 2 -part xcf04s                           >> $(@)
+	@echo program -onlyFpga -p 1                                >> $(@)
+	@echo quit                                                  >> $(@)
+endif
+
+ifeq ($(BOARD), SPARTAN3AN-STARTER-KIT-STORE)
+$(COMPILER)/impact.cfg::
+	@echo "  IMPCFG $(BOARD)"
+	@echo setMode -bscan                                         > $(@)
+	@echo setCable -p auto                                      >> $(@)
+	@echo addDevice -p 1 -file $(notdir $(PROJECT:%.elf=%)).bit >> $(@)
+	@echo addDevice -p 2 -part xcf04s                           >> $(@)
+	@echo program -e -v -p 1                                    >> $(@)
+	@echo quit                                                  >> $(@)
+endif
+
+#
+# create serialized vector format files
+#
+${COMPILER}/%.svf: ${COMPILER}/%.jed
+	@echo "  SVF	${@}"
+	@echo setMode -bscan                        > ${@:%.svf=%.cfg}
+	@echo setCable -p svf -file ${notdir ${@}} >> ${@:%.svf=%.cfg}
+	@echo addDevice -p 1 -file ${PROJECT}.jed  >> ${@:%.svf=%.cfg}
+	@echo program -erase -verify -p 1          >> ${@:%.svf=%.cfg}
+	@echo quit                                 >> ${@:%.svf=%.cfg}
+	@cd ${COMPILER}; LD_PRELOAD=../${USBDRIVER}/libusb-driver.so impact -batch ${notdir ${@:%.svf=%.cfg}}

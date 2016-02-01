@@ -1,0 +1,59 @@
+CONFIG VCCAUX = "3.3";
+
+#-----------------------------------------------------------------------------#
+# Clock configuration & ROM Block Assignments                                 #
+#-----------------------------------------------------------------------------#
+
+# CLOCKS Definition
+NET "clk_16M_in" TNM = "clk_16M";
+TIMESPEC "TS_clk_16M" = PERIOD "clk_16M" 62.5ns HIGH 40%;
+
+NET "dcm_clk_20M" TNM = "clk_20M";
+NET "clk_sys" TNM = "clk_20M";
+TIMESPEC "TS_clk_20M" = PERIOD "clk_20M" 50.0ns HIGH 50%;
+
+NET "dcm_clk_4M" TNM = "clk_4M";
+NET "clk_baud"  TNM = "clk_4M";
+TIMESPEC "TS_clk_4M" = PERIOD "clk_4M" 271.3ns HIGH 50%;
+
+#-----------------------------------------------------------------------------#
+# Clock Sources                                                               #
+#-----------------------------------------------------------------------------#
+
+NET "CLK_16MHZ" LOC = "C10" | IOSTANDARD = LVCMOS33 | TNM = "clk_16M";
+
+#-----------------------------------------------------------------------------#
+# Switches and LEDs                                                           #
+#-----------------------------------------------------------------------------#
+
+# Push Button Switches
+NET "PUSH_A" LOC = "K3" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+NET "PUSH_B" LOC = "H5" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+NET "PUSH_C" LOC = "L3" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+NET "RESET"  LOC = "H4" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+
+# LEDs
+NET "LED<3>" LOC = "B15" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8 ;
+NET "LED<2>" LOC = "C15" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8 ;
+NET "LED<1>" LOC = "C16" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8 ;
+NET "LED<0>" LOC = "D14" | IOSTANDARD = LVCMOS33 | SLEW = SLOW | DRIVE = 8 ;
+
+#-----------------------------------------------------------------------------#
+# RS-232 Port                                                                 #
+#-----------------------------------------------------------------------------#
+
+NET "RS232_RXD" LOC = "A3" | IOSTANDARD = LVCMOS33 ;
+NET "RS232_TXD" LOC = "B3" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+
+NET "RS232_LOG_RXD" LOC = "C5" | IOSTANDARD = LVCMOS33;
+NET "RS232_LOG_TXD" LOC = "D4" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+
+NET "RS232_DBG_RXD" LOC = "D3" | IOSTANDARD = LVCMOS33 ;
+NET "RS232_DBG_TXD" LOC = "B4" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+
+#-----------------------------------------------------------------------------#
+# DAC Port                                                                    #
+#-----------------------------------------------------------------------------#
+
+NET "DAC_OUT" LOC = "E13" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+

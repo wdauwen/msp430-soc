@@ -1,0 +1,21 @@
+ADDRESS_SPACE blockrom RAMB16 [0xe000:0xffff]
+
+  BUS_BLOCK
+      rom_8x2k_lo_0/Mram_memory2 [3:0];
+      rom_8x2k_lo_0/Mram_memory1 [7:4];
+      rom_8x2k_hi_0/Mram_memory2 [11:8];
+      rom_8x2k_hi_0/Mram_memory1 [15:12];
+  END_BUS_BLOCK;
+
+END_ADDRESS_SPACE;
+
+ADDRESS_SPACE blockram RAMB16 [0x0200:0x11ff]
+
+  BUS_BLOCK
+
+      ram_8x512_lo_0/Mram_memory [7:0];
+      ram_8x512_hi_0/Mram_memory [15:8];
+
+  END_BUS_BLOCK;
+
+END_ADDRESS_SPACE;

@@ -1,0 +1,4 @@
+# ignore files that are copied over from the original project
+omsp_*.v
+openMSP430.v
+openMSP430_undefines.v

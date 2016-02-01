@@ -1,0 +1,77 @@
+
+CTAGS_INSTALLED := $(shell which ctags && echo ctags_exists || echo ctags_notfound)
+
+all::
+
+ifeq ($(CTAGS_INSTALLED),ctags_exists)
+all:: ctags
+endif
+
+# detect build environment
+UNAME=${shell uname -o}
+
+ifndef COMPILER
+COMPILER=gcc
+endif
+
+ifneq ($(V), 1)
+AT=@
+endif
+
+$(COMPILER):
+	@mkdir $(@)
+
+all:: $(COMPILER)
+
+ctags:
+	@ctags -R *
+
+clean:
+	rm -rf $(COMPILER)
+
+# just load the image over uart
+load: all
+	../../rtl/cores/openmsp430/tools/bin/openmsp430-loader.tcl -device /dev/ttyUSB0 -baudrate 115200 \
+		$(COMPILER)/$(PROJECT).elf
+
+# Download a bit file to the FPGA, if it works, is also loads the bit files with
+# the correct data
+download:
+	$(MAKE) -C ../../synthesis/ download-impact PROJECT=$(COMPILER)/$(PROJECT).elf
+
+sim: all
+	@echo " SIM-HDL"
+	../../tools/populate_rom.pl $(COMPILER)/$(PROJECT).bin 0 > ../../bench/vhdl/rom_8x2k_lo.vhd
+	../../tools/populate_rom.pl $(COMPILER)/$(PROJECT).bin 1 > ../../bench/vhdl/rom_8x2k_hi.vhd
+		
+CC=msp430-gcc
+AR=msp430-ar
+
+# build options
+CFLAGS= -mmcu=$(CPU) \
+        -Wall \
+        -MD \
+        -c \
+        -g
+
+CFLAGS += $(IPATH)
+	
+$(COMPILER)/%.o: %.c 
+	@echo " CC	$(@)"
+	$(AT)$(CC) $(CFLAGS) $< -o $@
+
+$(COMPILER)/%.a:
+	@echo " AR	$(@)"
+	$(AT)$(AR) rcs $@ $^
+	
+$(COMPILER)/$(PROJECT).elf:
+	@echo " LD	$(@)"
+	$(AT)$(CC) -mmcu=$(CPU) -o $@ $(filter %.o, $^) $(filter %.a, $^)
+	$(AT)msp430-objcopy -O ihex $@ $(@:%.elf=%.a43)
+	$(AT)msp430-objcopy -O binary $@ $(@:%.elf=%.bin)
+	$(AT)msp430-objdump -dSt $@ > $(@:%.elf=%.lst)
+ifneq ($(UNAME), GNU/Linux)
+	$(AT)srec_cat.exe $(@:%.elf=%.bin) -binary -offset $(ROM_OFFSET) -o $(@:%.elf=%.mem) -vmem 8
+else
+	$(AT)LD_LIBRARY_PATH= srec_cat $(@:%.elf=%.bin) -binary -offset $(ROM_OFFSET) -o $(@:%.elf=%.mem) -vmem 8
+endif	

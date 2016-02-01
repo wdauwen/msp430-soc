@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="std_logic_1164" />
+            <top_module name="test_transmit" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/test_transmit/clk_50mhz" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_50mhz</obj_property>
+      <obj_property name="ObjectShortName">clk_50mhz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/nreset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">nreset</obj_property>
+      <obj_property name="ObjectShortName">nreset</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider8" type="divider">
+      <obj_property name="label">BAUDRATE GENERATOR</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/baudrate" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">baudrate</obj_property>
+      <obj_property name="ObjectShortName">baudrate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/baudrate_x8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">baudrate_x8</obj_property>
+      <obj_property name="ObjectShortName">baudrate_x8</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9" type="divider">
+      <obj_property name="label">TRANSMITTER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/tx_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_start</obj_property>
+      <obj_property name="ObjectShortName">tx_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/uut/run" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run</obj_property>
+      <obj_property name="ObjectShortName">run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/uut/run_synced" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_synced</obj_property>
+      <obj_property name="ObjectShortName">run_synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/uut/run_pulse" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_pulse</obj_property>
+      <obj_property name="ObjectShortName">run_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/tx_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_busy</obj_property>
+      <obj_property name="ObjectShortName">tx_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider22" type="divider">
+      <obj_property name="label">OUTPUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_transmit/txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+</wave_config>

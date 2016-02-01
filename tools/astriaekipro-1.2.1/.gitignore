@@ -1,0 +1,5 @@
+*.o
+*.a
+astriaekipro
+bitinfo-0.3/bitinfo
+cppfio/cppfio_config

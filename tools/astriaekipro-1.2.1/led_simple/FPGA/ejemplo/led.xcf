@@ -1,0 +1,12 @@
+
+CONFIG	VCCAUX = "3.3" ;
+
+# Clock Period Constraint, 16 MHz on-board clock
+Net clk_i TNM_NET = clk_i;
+TIMESPEC TS_CLK_16MHZ = PERIOD clk_i 62.50 ns;
+
+# I/O Timing Constraints
+OFFSET = IN  10 ns BEFORE clk_i;
+OFFSET = OUT 10 ns AFTER  clk_i;
+
+

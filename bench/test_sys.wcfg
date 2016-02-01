@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="pkg_helpers" />
+            <top_module name="pkg_soc" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="test_sys" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vl_types" />
+            <top_module name="vpkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="38" />
+   <wvobject fp_name="/test_sys/uut/clk_sys" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_sys</obj_property>
+      <obj_property name="ObjectShortName">clk_sys</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/reset_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset_n</obj_property>
+      <obj_property name="ObjectShortName">reset_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider17" type="divider">
+      <obj_property name="label">PROGRAM MEM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/openMSP430_0/pc_nxt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_nxt[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_nxt[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/openMSP430_0/pc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/pmem_cen" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pmem_cen</obj_property>
+      <obj_property name="ObjectShortName">pmem_cen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/pmem_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pmem_addr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">pmem_addr[10:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/pmem_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pmem_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pmem_dout[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/pmem_wen" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pmem_wen[1:0]</obj_property>
+      <obj_property name="ObjectShortName">pmem_wen[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/pmem_din" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pmem_din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pmem_din[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider17" type="divider">
+      <obj_property name="label">DATA MEM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/dmem_cen" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dmem_cen</obj_property>
+      <obj_property name="ObjectShortName">dmem_cen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/dmem_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dmem_addr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_addr[8:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/dmem_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dmem_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_dout[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/dmem_wen" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dmem_wen[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_wen[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/dmem_din" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dmem_din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_din[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9" type="divider">
+      <obj_property name="label">PERIPHERAL BUS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/per_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">per_addr[13:0]</obj_property>
+      <obj_property name="ObjectShortName">per_addr[13:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/per_din" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">per_din[15:0]</obj_property>
+      <obj_property name="ObjectShortName">per_din[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/per_we" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">per_we[1:0]</obj_property>
+      <obj_property name="ObjectShortName">per_we[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/per_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">per_dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">per_dout[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/per_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">per_en</obj_property>
+      <obj_property name="ObjectShortName">per_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider26" type="divider">
+      <obj_property name="label">GPIO0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/port_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">port_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">port_in[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/port_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">port_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">port_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/port_dir" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">port_dir[7:0]</obj_property>
+      <obj_property name="ObjectShortName">port_dir[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/adr_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">adr_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">adr_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/dat_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dat_o[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dat_o[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/dat_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dat_i[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dat_i[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/we_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">we_i</obj_property>
+      <obj_property name="ObjectShortName">we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/sel_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sel_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sel_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/stb_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">stb_i</obj_property>
+      <obj_property name="ObjectShortName">stb_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/reg_rd" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_rd[7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rd[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/reg_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_out[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/msp_gpio_3/reg_dir" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_dir[7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_dir[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider10" type="divider">
+      <obj_property name="label">UART0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/rs232_dce_rxd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rs232_dce_rxd</obj_property>
+      <obj_property name="ObjectShortName">rs232_dce_rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_sys/uut/rs232_dce_txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rs232_dce_txd</obj_property>
+      <obj_property name="ObjectShortName">rs232_dce_txd</obj_property>
+   </wvobject>
+</wave_config>

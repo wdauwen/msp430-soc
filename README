@@ -1,0 +1,58 @@
+When running on Linux, the first thing todo is executing the following 
+to setup the environment
+
+$ source [xilinx install dir]/.../ISE../settings.sh
+   
+Project uses submodules, update them regularly and don't forget to push
+changes in submodules back before pushing the main project.
+
+$ git submodule update [--init] 
+
+Modules:
+--------
+Most of the peripherals can be reused in other projects as well, they can
+be build seperately from the entire project.
+
+$ make module_[mod_name]			- build the module [mod_name]
+$ make module_clean_[mod_name]		- cleanup the module [mod_name]
+$ make module_clean					- cleanup every module in the project
+
+Loading the BRAMS:
+------------------
+In the past is was possible to merge an elf file directly with the data2mem
+tool, unfortunately, the latest elf format from the msp430 compiler is wrongly
+interpreted by the data2mem tool.
+
+Now, the binary format is converted to a mem file, which is interpreted correctly.
+The following package needs to be installed to have the srec_cat application 
+available.
+
+$ apt-get install srecord
+
+FPGAEDITOR
+----------
+fpga_editor can be used to retreive information about the location and actual 
+memory implementations of BRAMs. Note that some tricks are needed to get 
+fpga_editor running
+
+$ apt-get install libmotif4 libstdc++5
+$ ln -s /usr/lib/libXm.so.4.0.3 /usr/lib/libXm.so.3
+
+Making the board detectable
+---------------------------
+Create a file /etc/udev/rules.d/xusbdfwu.rules
+
+# version 0003
+ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="0008", MODE="666"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="0007", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusbdfwu.hex -D $tempnode"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="0009", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusb_xup.hex -D $tempnode"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="000d", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusb_emb.hex -D $tempnode"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="000f", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusb_xlp.hex -D $tempnode"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="0013", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusb_xp2.hex -D $tempnode"
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="03fd", ATTRS{idProduct}=="0015", RUN+="/sbin/fxload -v -t fx2 -I /usr/share/xusb_xse.hex -D $tempnode"
+
+copy the hex files in /opt/Xilinx/14.2/ISE_DS/common/bin/lin to /usr/share
+
+Compiling software
+------------------
+$ sudo apt-get install exuberant-ctags gcc-msp430 srecord

@@ -1,0 +1,4 @@
+vhdl work ../../led.vhdl
+vhdl work ../../avnet_s3a_eval.vhdl
+vhdl work led_top.vhdl
+

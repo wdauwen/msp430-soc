@@ -1,0 +1,5 @@
+# ignore the build directory
+synthesis/xilinx
+synthesis/_impactbatch.log
+
+.subprojectinit

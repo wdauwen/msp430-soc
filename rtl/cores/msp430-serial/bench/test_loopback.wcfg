@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="pkg_helpers" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="test_loopback" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="48" />
+   <wave_markers>
+      <marker time="53460000000" label="" />
+      <marker time="44820000000" label="" />
+   </wave_markers>
+   <wvobject fp_name="divider3" type="divider">
+      <obj_property name="label">UART</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/rxd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxd</obj_property>
+      <obj_property name="ObjectShortName">rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/tx_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_start</obj_property>
+      <obj_property name="ObjectShortName">tx_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/tx_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_busy</obj_property>
+      <obj_property name="ObjectShortName">tx_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rx_busy</obj_property>
+      <obj_property name="ObjectShortName">rx_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rx_done</obj_property>
+      <obj_property name="ObjectShortName">rx_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/global_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">global_reset</obj_property>
+      <obj_property name="ObjectShortName">global_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/fsm_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">fsm_state</obj_property>
+      <obj_property name="ObjectShortName">fsm_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider12" type="divider">
+      <obj_property name="label">RECEIVER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/baudrate" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">baudrate</obj_property>
+      <obj_property name="ObjectShortName">baudrate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/rxd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxd</obj_property>
+      <obj_property name="ObjectShortName">rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/clk_baud_x8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_baud_x8</obj_property>
+      <obj_property name="ObjectShortName">clk_baud_x8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/rxd_synced" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxd_synced</obj_property>
+      <obj_property name="ObjectShortName">rxd_synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/fsm_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">fsm_state</obj_property>
+      <obj_property name="ObjectShortName">fsm_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/capture" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">capture</obj_property>
+      <obj_property name="ObjectShortName">capture</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/capture_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">capture_en</obj_property>
+      <obj_property name="ObjectShortName">capture_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/capture_next" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">capture_next</obj_property>
+      <obj_property name="ObjectShortName">capture_next</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/char" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">char[7:0]</obj_property>
+      <obj_property name="ObjectShortName">char[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/rx_char" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rx_char[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_char[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/done_synced" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done_synced</obj_property>
+      <obj_property name="ObjectShortName">done_synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_rx/rx_done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rx_done</obj_property>
+      <obj_property name="ObjectShortName">rx_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider35" type="divider">
+      <obj_property name="label">RECEIVER_FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/di" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">di[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/wr_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/empty" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">empty</obj_property>
+      <obj_property name="ObjectShortName">empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/full" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">full</obj_property>
+      <obj_property name="ObjectShortName">full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/word_count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">word_count[4:0]</obj_property>
+      <obj_property name="ObjectShortName">word_count[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/level" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">level[4:0]</obj_property>
+      <obj_property name="ObjectShortName">level[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/pntr_rd" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pntr_rd[3:0]</obj_property>
+      <obj_property name="ObjectShortName">pntr_rd[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/pntr_wr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pntr_wr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">pntr_wr[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/memory" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">memory[15:0]</obj_property>
+      <obj_property name="ObjectShortName">memory[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[15]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">memory[15]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[14]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">memory[14]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[13]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">memory[13]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[12]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">memory[12]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[11]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">memory[11]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[10]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">memory[10]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[9]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">memory[9]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[8]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">memory[8]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[7]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">memory[7]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[6]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">memory[6]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[5]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">memory[5]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[4]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">memory[4]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[3]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">memory[3]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[2]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">memory[2]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[1]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">memory[1]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_loopback/uut/rx_fifo/memory[0]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">memory[0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/do" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">do[7:0]</obj_property>
+      <obj_property name="ObjectShortName">do[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/rx_fifo/rd_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_en</obj_property>
+      <obj_property name="ObjectShortName">rd_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider25" type="divider">
+      <obj_property name="label">TRANSMIT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/sys_clk_20m" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sys_clk_20m</obj_property>
+      <obj_property name="ObjectShortName">sys_clk_20m</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/tx_char" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_char[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_char[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/clk_baud" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_baud</obj_property>
+      <obj_property name="ObjectShortName">clk_baud</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/fsm_state" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">fsm_state</obj_property>
+      <obj_property name="ObjectShortName">fsm_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">busy</obj_property>
+      <obj_property name="ObjectShortName">busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/tx_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_start</obj_property>
+      <obj_property name="ObjectShortName">tx_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/run" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run</obj_property>
+      <obj_property name="ObjectShortName">run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/run_synced" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_synced</obj_property>
+      <obj_property name="ObjectShortName">run_synced</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/run_pulse" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">run_pulse</obj_property>
+      <obj_property name="ObjectShortName">run_pulse</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/tx_busy" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_busy</obj_property>
+      <obj_property name="ObjectShortName">tx_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_loopback/uut/serial_tx/txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+</wave_config>
