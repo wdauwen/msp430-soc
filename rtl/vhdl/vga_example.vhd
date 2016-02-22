@@ -74,7 +74,7 @@ begin
 	end process;
 
 ------------------------------------------------------------------------------
--- VGA example
+-- VGA Willem
 ------------------------------------------------------------------------------
 
         P_clkdiv2: process(clk)
@@ -141,6 +141,7 @@ begin
             variable balx : integer := 180;
             variable pady : integer := 320;
             variable padx : integer := 50;
+                        
         begin
             if clkdiv2'event and clkdiv2 = '1' then     
                 if onscreen = '1' then
@@ -158,14 +159,14 @@ begin
                 red <= "0000";
                 green <= "0000";
                 blue <= "0000";
-                -- pady := conv_integer (reg3);
+                pady := conv_integer(reg_3);
                 if (xpos > padx and xpos < padx+10) and (ypos > pady and ypos < pady+60) then
                     red <= "0000";
                     green <= "1111";
                     blue <= "0000";
                 end if;
-                -- baly := conv_integer(reg1);
-                -- balx := conv_integer (reg2);
+                baly := conv_integer(reg_1);
+                balx := conv_integer(reg_2);
                 if (xpos > balx and xpos < balx+10) and (ypos > baly and ypos < baly+10) then
                     red <= "1111";
                     green <= "0000";
