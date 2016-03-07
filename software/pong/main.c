@@ -35,30 +35,65 @@ void delay(unsigned int c, unsigned int d) {
 }
 
 int main(void) {
-	int i, dir =1;
+	int i, dirv =1;
 	int state = 0;
+	int dirh =1;
+	int dirp=1;
     WDTCTL = WDTPW | WDTHOLD;          // Disable watchdog timer
 
 
     // enable the outputs
-    iowrite16(0x240, BASE_VGA0 + baly);
-    iowrite16(0x240, BASE_VGA0 + balx);
-    iowrite16(0x240, BASE_VGA0 + padx);
+    iowrite16(240, BASE_VGA0 + baly);
+    iowrite16(240, BASE_VGA0 + balx);
+    iowrite16(240, BASE_VGA0 + padx);
 
 
     while (1) {
+    //vertical ball movement
     	i = ioread16(BASE_VGA0 + baly);
-    	i = i + dir;
-    	if (i > 480)
-    		{i =0;
-    	}
-    	iowrite16(i, BASE_VGA0 + baly);
-    	delay (1,0x2fff);
-    	if (ioread16(BASE_GPIO+GPIO_IN)& BTN_SOUTH) {
-    		if (state == 0) {
-    			dir = dir * -1;
-    			state = 1;
+    	i = i + dirv;
+    	if (i > 480 -12)
+    		{dirv = dirv * -1;
     		}
+    	if (i < 0)
+    	{dirv = dirv * -1;
+    	}
+
+    iowrite16(i, BASE_VGA0 + baly);
+    delay (1,0x2fff);
+
+    // horizontal ball movement
+    i = ioread16(BASE_VGA0 + balx);
+        	i = i + dirh;
+        	if (i > 640 -12)
+        		{dirh = dirh * -1;
+        		}
+        	if (i < 0)
+        	{dirh= dirh * -1;
+        	}
+
+        iowrite16(i, BASE_VGA0 + balx);
+        delay (1,0x2fff);
+
+    // Paddle movement
+        i = ioread16(BASE_VGA0 + padx);
+            	i = i + dirp;
+            	if (i > 480 -12)
+            		{dirp = dirp * -1;
+            		}
+            	if (i < 0)
+            	{dirp = dirp * -1;
+            	}
+
+            iowrite16(i, BASE_VGA0 + padx);
+            delay (1,0x2fff);
+
+    	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
+    		if (state == 0)
+   	   {
+    		dirp = dirp * -1;
+    		state = 1;
+   		}
     	} else {
     		state = 0;
     	}
@@ -66,6 +101,6 @@ int main(void) {
 
     	}
 
-    }
-}
+
+
 
