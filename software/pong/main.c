@@ -60,7 +60,7 @@ int main(void) {
     	}
 
     iowrite16(i, BASE_VGA0 + baly);
-    delay (1,0x2fff);
+    delay (1,0x100f);
 
     // horizontal ball movement
     i = ioread16(BASE_VGA0 + balx);
@@ -73,20 +73,20 @@ int main(void) {
         	}
 
         iowrite16(i, BASE_VGA0 + balx);
-        delay (1,0x2fff);
+        delay (1,0x100f);
 
-    // Paddle movement
-        i = ioread16(BASE_VGA0 + padx);
-            	i = i + dirp;
-            	if (i > 480 -12)
-            		{dirp = dirp * -1;
-            		}
-            	if (i < 0)
-            	{dirp = dirp * -1;
-            	}
+    //Paddle movement
+       i = ioread16(BASE_VGA0 + padx);
+           	i = i + dirp;
+          	if (i > 480 -12)
+          		{dirp = dirp * -1;
+          		}
+          	if (i < 0)
+          	{dirp = dirp * -1;
+          	}
 
-            iowrite16(i, BASE_VGA0 + padx);
-            delay (1,0x2fff);
+          iowrite16(i, BASE_VGA0 + padx);
+          delay (1,0x100f);
 
     	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
     		if (state == 0)
