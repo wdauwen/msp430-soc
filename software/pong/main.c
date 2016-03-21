@@ -88,7 +88,6 @@ int main(void) {
           iowrite16(i, BASE_VGA0 + padx);
           delay (1,0x100f);
 
-<<<<<<< HEAD
     //	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
     //		if (state == 0)
    	//   {
@@ -111,18 +110,6 @@ int main(void) {
 
     }
 }
-=======
-    	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
-    		if (state == 0)
-   	   {
-    		dirp = dirp * -1;
-    		state = 1;
-   		}
-    	} else {
-    		state = 0;
-    	}
-    		}
->>>>>>> 43fe933dae79776ed45834c25c94904089b05bb2
 
 
 
