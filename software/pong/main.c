@@ -38,7 +38,7 @@ int main(void) {
 	int i, dirv =1;
 	int state = 0;
 	int dirh =1;
-	int dirp=1;
+	int dirp=4;
     WDTCTL = WDTPW | WDTHOLD;          // Disable watchdog timer
 
 
@@ -60,7 +60,7 @@ int main(void) {
     	}
 
     iowrite16(i, BASE_VGA0 + baly);
-    delay (1,0x2fff);
+    delay (1,0x100f);
 
     // horizontal ball movement
     i = ioread16(BASE_VGA0 + balx);
@@ -73,33 +73,44 @@ int main(void) {
         	}
 
         iowrite16(i, BASE_VGA0 + balx);
-        delay (1,0x2fff);
+        delay (1,0x100f);
 
-    // Paddle movement
-        i = ioread16(BASE_VGA0 + padx);
-            	i = i + dirp;
-            	if (i > 480 -12)
-            		{dirp = dirp * -1;
-            		}
-            	if (i < 0)
-            	{dirp = dirp * -1;
-            	}
+    //Paddle movement
+       i = ioread16(BASE_VGA0 + padx);
+           	i = i + dirp;
+          	if (i > 480 -12)
+          		{dirp = dirp * -1;
+          		}
+          	if (i < 0)
+          	{dirp = dirp * -1;
+          	}
 
-            iowrite16(i, BASE_VGA0 + padx);
-            delay (1,0x2fff);
+          iowrite16(i, BASE_VGA0 + padx);
+          delay (1,0x100f);
 
-    	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
-    		if (state == 0)
-   	   {
-    		dirp = dirp * -1;
-    		state = 1;
-   		}
-    	} else {
-    		state = 0;
-    	}
-    		}
+    //	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
+    //		if (state == 0)
+   	//   {
+    //		dirp = dirp * -1;
+    //		state = 1;
+   	//	}
+    //	} else {
+    //		state = 0;
+    //	}
+    //		}
+          if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
+        	  dirp = 4;
+          }
+          else if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
+          	  dirp = -4;
+            }
+          else {
+        	  dirp = 0;
+          }
 
-    	}
+    }
+}
+
 
 
 
