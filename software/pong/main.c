@@ -18,6 +18,7 @@
 #define baly			(0x0)
 #define balx			(0x2)
 #define padx			(0x4)
+#define pady			(0x8)
 
 #define X_max 			640
 #define X_min			480
@@ -36,9 +37,10 @@ void delay(unsigned int c, unsigned int d) {
 
 int main(void) {
 	int i, dirv =1;
-	int state = 0;
+	int j;
+	//int state = 0;
 	int dirh =1;
-	int dirp=4;
+	int dirp =4;
     WDTCTL = WDTPW | WDTHOLD;          // Disable watchdog timer
 
 
@@ -46,13 +48,14 @@ int main(void) {
     iowrite16(240, BASE_VGA0 + baly);
     iowrite16(240, BASE_VGA0 + balx);
     iowrite16(240, BASE_VGA0 + padx);
+    iowrite16(240, BASE_VGA0 + pady);
 
 
     while (1) {
     //vertical ball movement
     	i = ioread16(BASE_VGA0 + baly);
     	i = i + dirv;
-    	if (i > 480 -12)
+    	if (i > X_min -12)
     		{dirv = dirv * -1;
     		}
     	if (i < 0)
@@ -64,13 +67,17 @@ int main(void) {
 
     // horizontal ball movement
     i = ioread16(BASE_VGA0 + balx);
-        	i = i + dirh;
-        	if (i > 640 -12)
-        		{dirh = dirh * -1;
-        		}
-        	if (i < 0)
-        	{dirh= dirh * -1;
-        	}
+    i = i + dirh;
+       	if (i > X_max -12)
+       		{dirh = dirh * -1;
+       		}
+       	if (i < 0)
+       	{dirh= dirh * -1;
+       	}
+       	if (i == 60)
+       		{dirh = dirh * -1;
+       		dirv = dirv * -1;
+       		}
 
         iowrite16(i, BASE_VGA0 + balx);
         delay (1,0x100f);
@@ -99,19 +106,14 @@ int main(void) {
     //	}
     //		}
           if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
-        	  dirp = 4;
+                  	  dirp = 4;
+                    }
+                    else if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
+                    	  dirp = -4;
+                      }
+                    else {
+                  	  dirp = 0;
+                    }
+
+              }
           }
-          else if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_SOUTH) {
-          	  dirp = -4;
-            }
-          else {
-        	  dirp = 0;
-          }
-
-    }
-}
-
-
-
-
-
