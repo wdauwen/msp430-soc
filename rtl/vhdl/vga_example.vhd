@@ -33,6 +33,7 @@ architecture Behavioral of msp_vga is
 	signal reg_1 : STD_LOGIC_VECTOR(15 downto 0);
 	signal reg_2 : STD_LOGIC_VECTOR(15 downto 0);
 	signal reg_3 : STD_LOGIC_VECTOR(15 downto 0);
+	signal reg_4 : STD_LOGIC_VECTOR(15 downto 0);
 
 	signal vga_clk : STD_LOGIC := '0';
 	
@@ -52,6 +53,7 @@ begin
 				when "00"    => reg_rd <= reg_1;
 				when "01"    => reg_rd <= reg_2;
 				when "10"    => reg_rd <= reg_3;
+				when "11"    => reg_rd <= reg_4;
 				when others  => reg_rd <= (others => '0');
 			end case;
 		end if;
@@ -67,6 +69,7 @@ begin
 					when "00"   => reg_1 <= DAT_I;
 					when "01"   => reg_2 <= DAT_I;
 					when "10"   => reg_3 <= DAT_I;
+					when "11"   => reg_4 <= DAT_I;
 					when others => null;
 				end case;
 			end if;

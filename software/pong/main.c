@@ -17,8 +17,8 @@
 /* define offset registers */
 #define baly			(0x0)
 #define balx			(0x2)
-#define padx			(0x4)
-#define pady			(0x8)
+//#define padx			(0x4)
+#define pady			(0x4)
 
 #define X_max 			640
 #define X_min			480
@@ -47,7 +47,7 @@ int main(void) {
     // enable the outputs
     iowrite16(240, BASE_VGA0 + baly);
     iowrite16(240, BASE_VGA0 + balx);
-    iowrite16(240, BASE_VGA0 + padx);
+   // iowrite16(240, BASE_VGA0 + padx);
     iowrite16(240, BASE_VGA0 + pady);
 
 
@@ -68,22 +68,25 @@ int main(void) {
     // horizontal ball movement
     i = ioread16(BASE_VGA0 + balx);
     i = i + dirh;
+    if (i == 60)
+    {
        	if (i > X_max -12)
        		{dirh = dirh * -1;
        		}
        	if (i < 0)
        	{dirh= dirh * -1;
        	}
-       	if (i == 60)
-       		{dirh = dirh * -1;
-       		dirv = dirv * -1;
+       	if (i == ioread16(BASE_VGA0+pady))
+       	    {dirh = dirh * -1;
+       	     dirv = dirv * -1;
        		}
 
+    }
         iowrite16(i, BASE_VGA0 + balx);
         delay (1,0x100f);
 
     //Paddle movement
-       i = ioread16(BASE_VGA0 + padx);
+       i = ioread16(BASE_VGA0 + pady);
            	i = i + dirp;
           	if (i > 480 -12)
           		{dirp = dirp * -1;
@@ -92,19 +95,10 @@ int main(void) {
           	{dirp = dirp * -1;
           	}
 
-          iowrite16(i, BASE_VGA0 + padx);
+          iowrite16(i, BASE_VGA0 + pady);
           delay (1,0x100f);
 
-    //	if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
-    //		if (state == 0)
-   	//   {
-    //		dirp = dirp * -1;
-    //		state = 1;
-   	//	}
-    //	} else {
-    //		state = 0;
-    //	}
-    //		}
+
           if (ioread16(BASE_GPIO0+GPIO_IN)& BTN_NORTH) {
                   	  dirp = 4;
                     }
